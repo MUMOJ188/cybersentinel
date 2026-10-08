@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Backend: mix deps.get",
+      "type": "shell",
+      "command": "mix deps.get",
+      "options": { "cwd": "${workspaceFolder}/backend", "env": { "MIX_ENV": "dev" } },
+      "problemMatcher": []
+    },
+    {
+      "label": "Backend: ecto.setup",
+      "type": "shell",
+      "command": "mix ecto.setup",
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Backend: phx.server",
+      "type": "shell",
+      "command": "mix phx.server",
+      "isBackground": true,
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "presentation": { "panel": "dedicated", "group": "cybersentinel" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Frontend: npm install",
+      "type": "shell",
+      "command": "npm install",
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Frontend: npm run dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "isBackground": true,
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "presentation": { "panel": "dedicated", "group": "cybersentinel" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run CyberSentinel (backend + frontend)",
+      "dependsOn": ["Backend: phx.server", "Frontend: npm run dev"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ]
+}
